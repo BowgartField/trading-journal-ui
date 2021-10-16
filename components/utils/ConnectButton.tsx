@@ -4,13 +4,14 @@ import Button from "./Button";
 
 interface ConnectButtonHeader{
     click: () => void,
-    className: string
+    className?: string,
+    connectButtonTitle: string
 }
 
-export default function ConnectButton({click,className}:ConnectButtonHeader){
+export default function ConnectButton({ click, className, connectButtonTitle }:ConnectButtonHeader){
     return(
         <div className={className}>
-            <Button title="Connect" type={ButtonType.DEFAULT} click={click}/>
+            <Button title={connectButtonTitle} type={ButtonType.DEFAULT} click={click}/>
             <div></div>
         </div>
     )

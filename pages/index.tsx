@@ -6,30 +6,30 @@ import ConnectPopup from '../components/popups/ConnectPopup';
 
 export default function Home() {
 
-  const {connect} = useWallet();
+  const {requestConnection, accounts} = useWallet();
 
   const [ConnectPopupIsOpen, setConnectPopupIsOpen] = useState(false)
 
   return (
     <div className="font-Roboto">
         
-        <ConnectPopup open={ConnectPopupIsOpen} setOpen={setConnectPopupIsOpen}/>
+        <ConnectPopup 
+          open={ConnectPopupIsOpen} 
+          setOpen={setConnectPopupIsOpen}
+          requestConnection={requestConnection}
+        />
 
         <div>
           <Head>
               <title>Trading Journal</title>
-              <style>
-                @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-              </style>
+              <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');</style>
           </Head>
-          <Header onConnect={connectUser}/>
+          <Header onConnect={connectUser} connectButtonTitle={ accounts[0] !== undefined ? accounts[0].substring(0,5) + "..." + accounts[0].substring(34,39) : "connect"}/>
       </div>
     </div>
   )
 
-  async function connectUser(){
-
-    await connect();
+  function connectUser(){
 
     setConnectPopupIsOpen(true)
 

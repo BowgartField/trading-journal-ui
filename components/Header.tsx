@@ -4,10 +4,11 @@ import Logo from "./utils/Logo";
 import { calcRem } from "./utils/style";
 
 interface HeaderProps{
-    onConnect: () => void
+    onConnect: () => void,
+    connectButtonTitle: string
 }
 
-export default function Header({onConnect}:HeaderProps){
+export default function Header({ onConnect, connectButtonTitle }:HeaderProps){
     return(
         <div
             className="flex pt-2 px-2"
@@ -20,7 +21,7 @@ export default function Header({onConnect}:HeaderProps){
                 <Logo/> 
                 Trading Journal
             </div>
-            <ConnectButton click={onConnect} className=""/>
+            <ConnectButton click={onConnect} connectButtonTitle={connectButtonTitle}/>
         </div>
     )
 }
